@@ -1,9 +1,0 @@
-////////////////////////////////////////////////////////////////////
-////////////             Strategic Machines           /////////////
-///////////         Strategic Bot    c2018          //////////////
-/////////////////////////////////////////////////////////////////
-const Botkit =      require('botkit')
-const Controller =  Botkit.slackbot({
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET
-})

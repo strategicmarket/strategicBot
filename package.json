@@ -4,7 +4,8 @@
   "description": "The Strategic Machines sales bot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,10 @@
   },
   "homepage": "http://www.xiollc.com/",
   "dependencies": {
-    "botkit": "^0.6.14"
+    "body-parser": "^1.18.3",
+    "botkit": "^0.6.14",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "request": "^2.87.0"
   }
 }
