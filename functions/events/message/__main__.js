@@ -23,7 +23,7 @@ const lib = require('lib')({token: process.env.STDLIB_TOKEN});
 
 module.exports = (user, channel, text = '', event = {}, botToken = null, callback) => {
   // this switch statement determines strategic bot's response to the end user
-  // if any case is met the reponse well be met
+  // if any case is met the reponse will be met appropriately
   // else I'm strategic but I can't respond to that.
   switch (text.toLowerCase().replace(/[^a-zA-Z ]/g, "")) {
     case 'hi':
@@ -34,12 +34,15 @@ module.exports = (user, channel, text = '', event = {}, botToken = null, callbac
     case 'bonjour':
     case 'sup':
       callback(null, {
-        text: `Hey there! <@${user}> said ${text}`,
-        attachments: [
-        ]
+        text: `Hey there <@${user}>! I'm SM Bot a live agent for Strategic Machines.`,
       });
     break;
+    case 'bye':
+    case 'goodbye':
     case 'see you later':
+      callback(null, {
+        text: `Bye! I hope to see you soon!`
+      })
     case 'who are you':
     case 'what are you':
     callback(null, {
@@ -50,11 +53,11 @@ module.exports = (user, channel, text = '', event = {}, botToken = null, callbac
     case 'who is strategic machines':
       // Interactive message that creates a button to offer user a choice
       // If yes or no button is clicked an action is triggered to respond
-      console.log('machine')
+      // This triggers the more_yes action
       callback(null, {
         attachments: [
           {
-            title: `Hi <@${user}>! I'm SM Bot!`,
+            title: `Hi <@${user}>! Strategic Machines is an organization that connects businesses to the conversational economy through intelligent interactions using low latency messaging platforms and ai engines.`,
             callback_id: 'hear_more',
             attachment_type: 'default',
             text:
@@ -67,7 +70,7 @@ module.exports = (user, channel, text = '', event = {}, botToken = null, callbac
                 type: "button"
               },
               {
-                name: "no",
+                name: "no_more",
                 text: "No",
                 value: "no",
                 style: "danger",
@@ -76,15 +79,9 @@ module.exports = (user, channel, text = '', event = {}, botToken = null, callbac
             ]
           }
         ]
-        // text: `Hey there <@${user}>! I'm SM Bot!`,
-        // attachments: [
-        //   // You can customize your messages with attachments.
-        //   // See https://api.slack.com/docs/message-attachments for more info.
-        // ]
       });
         break;
     default:
-      console.log("didn't work")
       callback(null, {
         text: "I'm very strategic but, I can't seem to respond to that at this time..."
       })
