@@ -1,4 +1,4 @@
-# Stategic Bot
+# Strategic Bot
 
 Strategic Bot is a microservice deployed at [StdLib](https://stdlib.com/)
 
