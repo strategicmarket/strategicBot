@@ -4,6 +4,9 @@
 /////////////////////////////////////////////////////////////////
 
 const lib = require('lib')({token: process.env.STDLIB_TOKEN});
+const msgData = require('../../../utils/messageObj')
+const sendRequest = require('../../../helpers/machineRequest')
+
 
 /**
 * message event
@@ -34,7 +37,7 @@ module.exports = (user, channel, text = '', event = {}, botToken = null, callbac
     case 'bonjour':
     case 'sup':
       callback(null, {
-        text: `Hey there <@${user}>! I'm SM Bot a live agent for Strategic Machines.`,
+        text: `Hi <@${user}>! I'm SM Bot a live agent for Strategic Machines.`,
       });
     break;
     case 'bye':
@@ -82,6 +85,11 @@ module.exports = (user, channel, text = '', event = {}, botToken = null, callbac
       });
         break;
     default:
+      // set message object body to entered text
+      msgData.Body = text
+      
+      // pulse messaging platform
+      sendRequest.postData(msgData)
       callback(null, {
         text: "I'm very strategic but, I can't seem to respond to that at this time..."
       })
