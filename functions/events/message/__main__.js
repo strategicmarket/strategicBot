@@ -87,12 +87,23 @@ module.exports = (user, channel, text = '', event = {}, botToken = null, callbac
     default:
       // set message object body to entered text
       msgData.Body = text
+      // console.log(msgData)
       
-      // pulse messaging platform
-      sendRequest.postData(msgData)
-      callback(null, {
-        text: "I'm very strategic but, I can't seem to respond to that at this time..."
+      getData(msgData).then(msgRes => {
+        // consolidate returned array and seperate sentence with a period
+        let message = msgRes.join('. ')
+        // return message to slack
+          callback(null, {
+            text: message
+          })
       })
   }
 
 };
+
+// make request to messaging platform and return for use in slack
+async function getData(userText){
+  let response = await sendRequest.postData(userText)
+  return response
+}
+

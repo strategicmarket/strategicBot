@@ -5,6 +5,7 @@ const uuidv1 = require('uuid/v1')
 * pass to sendReqest in __main__ in message folder
 * From is the number of user. It is hard coded right now
 * but should be changed. Same goes for Body.
+* chaotic source will need to be updated to slack
 */
 const message = {
     MessageSid: uuidv1(),
@@ -31,7 +32,7 @@ const message = {
     ApiVersion: "v1",
     PostDate: Date.now(),
     ChaoticSid: uuidv1(),
-    ChaoticSource: "slack" 
+    ChaoticSource: "web" 
 }
 
 module.exports = message
