@@ -10,12 +10,19 @@ module.exports = {
     let data = await Axios.post(url, message)
         .then(res => {
             let msgData = res.data
+            console.log(msgData)
             // stage empty array which will filled with platform response
             const msgResponse = []
-            for (messages of msgData){
-                msgResponse.push(messages.msg)
-            }
-            return msgResponse;
+            
+            msgData.forEach((r) => {
+                console.log(`R: ${r}`)
+                let rKey = Object.keys(r)[0]
+                let message = r[rKey]
+                msgResponse.push(message)
+                console.log(`message: ${message}`)
+                console.log(`msgResponse: ${msgResponse}`)
+            })
+            return msgResponse
         })
         return data
   }
