@@ -85,10 +85,10 @@ module.exports = (user, channel, text = '', event = {}, botToken = null, callbac
       });
         break;
     default:
-      // set message object body to entered text
+      // set message object body to user entered text
       msgData.Body = text
       // console.log(msgData)
-      
+  
       getData(msgData).then(msgRes => {
         // consolidate returned array and seperate sentence with a period
         let message = msgRes.join('. ')
